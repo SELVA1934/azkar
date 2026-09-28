@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+@theme {
+  --color-night-50: #f3f7f5;
+  --color-night-100: #dfeae4;
+  --color-night-600: #1f4d3f;
+  --color-night-700: #163c31;
+  --color-night-800: #0f2d25;
+  --color-night-900: #0a1f1a;
+  --color-night-950: #061511;
+
+  --color-gold-100: #f7ecc9;
+  --color-gold-200: #efdb9a;
+  --color-gold-300: #e4c56a;
+  --color-gold-400: #d4ab3d;
+  --color-gold-500: #c9a227;
+  --color-gold-600: #a8841c;
+
+  --color-cream-50: #fdfbf6;
+  --color-cream-100: #f8f3e8;
+  --color-cream-200: #efe6d3;
+  --color-cream-300: #e2d5b8;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+  --font-arabic: "Amiri", "Scheherazade New", "Noto Naskh Arabic", "Traditional Arabic", "Geeza Pro", serif;
+
+  --shadow-soft: 0 10px 40px -12px rgba(6, 21, 17, 0.18);
+  --shadow-glow: 0 0 0 1px rgba(201, 162, 39, 0.25), 0 18px 50px -20px rgba(201, 162, 39, 0.45);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream-50);
+  color: var(--color-night-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Arabic typography */
+.arabic {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  unicode-bidi: isolate;
+  line-height: 2.1;
+  font-feature-settings: "liga" 1, "calt" 1;
+  letter-spacing: 0;
+}
+
+.arabic-size-1 { font-size: 1.35rem; }
+.arabic-size-2 { font-size: 1.7rem; }
+.arabic-size-3 { font-size: 2.1rem; }
+.arabic-size-4 { font-size: 2.6rem; }
+
+@media (min-width: 768px) {
+  .arabic-size-1 { font-size: 1.5rem; }
+  .arabic-size-2 { font-size: 1.95rem; }
+  .arabic-size-3 { font-size: 2.4rem; }
+  .arabic-size-4 { font-size: 3rem; }
+}
+
+/* Islamic 8-point star lattice as a subtle background */
+.pattern-stars {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23c9a227' stroke-opacity='0.16' stroke-width='1'%3E%3Cpath d='M40 4 L47 33 L76 40 L47 47 L40 76 L33 47 L4 40 L33 33 Z'/%3E%3Cpath d='M40 14 L58 22 L66 40 L58 58 L40 66 L22 58 L14 40 L22 22 Z'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3Cpath d='M0 0 L12 12 M80 0 L68 12 M0 80 L12 68 M80 80 L68 68'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+.pattern-stars-light {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%231f4d3f' stroke-opacity='0.07' stroke-width='1'%3E%3Cpath d='M40 4 L47 33 L76 40 L47 47 L40 76 L33 47 L4 40 L33 33 Z'/%3E%3Cpath d='M40 14 L58 22 L66 40 L58 58 L40 66 L22 58 L14 40 L22 22 Z'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(120deg, #e4c56a 0%, #c9a227 45%, #f0dc9c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border: 1px solid var(--color-cream-200);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.card-dark {
+  background: linear-gradient(160deg, var(--color-night-800), var(--color-night-950));
+  border: 1px solid rgba(201, 162, 39, 0.25);
+  border-radius: 1.25rem;
+  color: var(--color-cream-100);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.7rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.925rem;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px) scale(0.99); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--color-night-800);
+  color: var(--color-cream-50);
+  box-shadow: 0 8px 24px -10px rgba(10, 31, 26, 0.6);
+}
+.btn-primary:hover { background: var(--color-night-700); }
+
+.btn-gold {
+  background: linear-gradient(120deg, #d4ab3d, #c9a227);
+  color: var(--color-night-950);
+  box-shadow: 0 8px 24px -10px rgba(201, 162, 39, 0.7);
+}
+.btn-gold:hover { filter: brightness(1.05); }
+
+.btn-outline {
+  border: 1px solid var(--color-cream-300);
+  background: white;
+  color: var(--color-night-800);
+}
+.btn-outline:hover { border-color: var(--color-gold-400); background: var(--color-cream-50); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-night-700);
+}
+.btn-ghost:hover { background: var(--color-cream-100); }
+
+/* Inputs */
+.input {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid var(--color-cream-300);
+  background: white;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  color: var(--color-night-900);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.input:focus {
+  border-color: var(--color-gold-400);
+  box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.15);
+}
+.label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-night-600);
+  margin-bottom: 0.4rem;
+}
+
+/* Tasbih button pulse */
+@keyframes tap-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.55); }
+  100% { box-shadow: 0 0 0 28px rgba(201, 162, 39, 0); }
+}
+.tap-pulse { animation: tap-pulse 0.45s ease-out; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fade-up 0.5s ease both; }
+.fade-delay-1 { animation-delay: 0.08s; }
+.fade-delay-2 { animation-delay: 0.16s; }
+.fade-delay-3 { animation-delay: 0.24s; }
+
+/* Ornamental divider */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-gold-500);
+}
+.ornament::before,
+.ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.5), transparent);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--color-cream-300); border-radius: 999px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* ---------------- Arabic / RTL mode ---------------- */
+html[lang="ar"] body {
+  font-family: "Cairo", "Noto Kufi Arabic", var(--font-sans);
+  letter-spacing: 0;
+}
+
+/* Elegant Arabic headings where the serif face is used */
+html[lang="ar"] .font-serif {
+  font-family: "Amiri", "Cairo", serif;
+}
+
+/* Arabic UI labels rendered with the sans stack still read well small */
+html[lang="ar"] .label {
+  letter-spacing: 0;
+}
+
+/* Keep the Quranic Arabic face untouched, but tighten tracking for Cairo */
+.arabic {
+  font-family: var(--font-arabic);
+}
+
+/* Mirror directional icons in RTL */
+html[dir="rtl"] .icon-mirror {
+  transform: scaleX(-1);
+}
+
+/* Numeric counters keep a stable width across locales */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
